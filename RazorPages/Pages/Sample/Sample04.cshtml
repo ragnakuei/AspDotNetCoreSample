@@ -1,42 +1,39 @@
 ﻿@page
-@model RazorPages.Pages.Sample.Sample04
+@model Sample04
 
 <h1>Sample04</h1>
-
-<form method="post">
+<form>
     <div class="form-group">
-        <label asp-for="Order.Id"></label>
-        <input asp-for="Order.Id" class="form-control"/>
+        <label asp-for="PageNo" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="PageNo" class="form-control">
+        </div>
     </div>
     <div class="form-group">
-        <label asp-for="Order.OrderDate"></label>
-        <input asp-for="Order.OrderDate" class="form-control" type="date"/>
+        <label asp-for="PageSize" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="PageSize" class="form-control">
+        </div>
     </div>
 
-    <label>Order Detail</label>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>@(nameof(OrderDetail.ProductId))</th>
-            <th>@(nameof(OrderDetail.Count))</th>
-        </tr>
-        </thead>
-        <tbody>
-        @for (var index = 0 ; index < Model.Order?.OrderDetails?.Length ; index++)
-        {
-            <tr>
-                <td>
-                    <label asp-for="Order.OrderDetails[index].ProductId"></label>
-                    <input asp-for="Order.OrderDetails[index].ProductId" class="form-control"/>
-                </td>
-                <td>
-                    <label asp-for="Order.OrderDetails[index].Count"></label>
-                    <input asp-for="Order.OrderDetails[index].Count" class="form-control"/>
-                </td>
-            </tr>
-        }
-        </tbody>
-    </table>
+    @{
+        var Prev = new Dictionary<string, string>
+                   {
+                       { nameof(Model.PageSize), Model.PageSize.ToString() },
+                       { nameof(Model.PageNo), (Model.PageNo - 1).ToString() }
+                   };
+        var Next = new Dictionary<string, string>
+                   {
+                       { nameof(Model.PageSize), Model.PageSize.ToString() },
+                       { nameof(Model.PageNo), (Model.PageNo + 1).ToString() }
+                   };
+    }
+    <div class="form-group row">
+        <a asp-all-route-data="Prev" >@nameof(Prev)</a>
+        <a asp-all-route-data="Next" >@nameof(Next)</a>
+    </div>
 
-    <input type="submit" value="Create" class="btn btn-primary"/>
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-primary"/>
+    </div>
 </form>

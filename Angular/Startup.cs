@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using BusinessLogic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -23,7 +24,7 @@ namespace AngularWithAspNetCoreWebApiDemo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            AddBusinessLogicServices(services);
+            services.AddBusinessLogicServices();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -70,31 +71,6 @@ namespace AngularWithAspNetCoreWebApiDemo
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
-        }
-        
-        public static void AddBusinessLogicServices(IServiceCollection services)
-        {
-            var serviceTypes = Assembly.Load("BusinessLogic")
-                                       .GetTypes()
-                                       .Where(i => i.Name.EndsWith("Service", StringComparison.OrdinalIgnoreCase))
-                                       .ToArray();
-
-            foreach (var interfaceType in serviceTypes.Where(t => t?.IsInterface ?? false))
-            {
-                var implementClassType = serviceTypes.FirstOrDefault(t => t.IsInterface == false
-                                                                       && interfaceType.IsAssignableFrom(t)
-                                                                       && !t.IsInterface && !t.IsAbstract);
-                if (implementClassType != null)
-                {
-                    typeof(ServiceCollectionServiceExtensions)
-                       .GetMethods()
-                       .FirstOrDefault(m => m.Name.Equals("AddTransient", StringComparison.CurrentCultureIgnoreCase)
-                                         && m.IsGenericMethod
-                                         && m.GetParameters().Length == 1)
-                      ?.MakeGenericMethod(interfaceType, implementClassType)
-                       .Invoke(null, new object[] { services });
-                }
-            }
         }
     }
 }
