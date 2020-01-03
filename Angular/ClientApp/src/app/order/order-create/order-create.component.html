@@ -1,0 +1,198 @@
+<h2 class="mat-h2">OrderCreate</h2>
+
+<div *ngIf="this.orderForm">
+  <form [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm.value)">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title></mat-card-title>
+        <mat-card-subtitle></mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>
+          <mat-form-field>
+            <input matInput
+                   formControlName="customerID"
+                   placeholder="CustomerID"
+                   [matAutocomplete]="customerAutoComplete" />
+          </mat-form-field>
+
+          <mat-autocomplete #customerAutoComplete="matAutocomplete"
+                            (optionSelected)="onCustomerOptionChanged($event)"
+                            [displayWith]="displayCustomer">
+            <mat-option *ngFor="let customerOption of customerOptions"
+                        [value]="customerOption">
+              <span [innerHTML]="highlightFiltered(customerOption.companyName)"></span>
+            </mat-option>
+          </mat-autocomplete>
+        </p>
+        <p>
+          <mat-form-field>
+            <input type="number"
+                   matInput
+                   formControlName="employeeID"
+                   placeholder="EmployeeID" />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field (click)="OrderDatePicker.open()">
+            <input matInput
+                   [matDatepicker]="OrderDatePicker"
+                   formControlName="orderDate"
+                   placeholder="OrderDate" />
+            <mat-datepicker-toggle matSuffix
+                                   [for]="OrderDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #OrderDatePicker></mat-datepicker>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field (click)="RequiredDatePicker.open()">
+            <input matInput
+                   [matDatepicker]="RequiredDatePicker"
+                   formControlName="requiredDate"
+                   placeholder="RequiredDate" />
+            <mat-datepicker-toggle matSuffix
+                                   [for]="RequiredDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #RequiredDatePicker></mat-datepicker>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field (click)="ShippedDatePicker.open()">
+            <input matInput
+                   [matDatepicker]="ShippedDatePicker"
+                   formControlName="shippedDate"
+                   placeholder="ShippedDate" />
+            <mat-datepicker-toggle matSuffix
+                                   [for]="ShippedDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #ShippedDatePicker></mat-datepicker>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input matInput type="number" formControlName="shipVia" placeholder="ShipVia" />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input matInput type="number" formControlName="freight" placeholder="Freight" />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input matInput formControlName="shipName" placeholder="ShipName" />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input matInput
+                   formControlName="shipAddress"
+                   placeholder="ShipAddress" />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input matInput formControlName="shipCity" placeholder="ShipCity" />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input matInput
+                   formControlName="shipRegion"
+                   placeholder="ShipRegion" />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input matInput
+                   formControlName="shipPostalCode"
+                   placeholder="ShipPostalCode" />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input matInput
+                   formControlName="shipCountry"
+                   placeholder="ShipCountry" />
+          </mat-form-field>
+        </p>
+
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Details</mat-card-title>
+            <mat-card-subtitle></mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content>
+            <mat-list formArrayName="details">
+              <mat-list-item *ngFor="
+                  let detail of this.orderForm.get('details')?.controls;
+                  let detailIndex = index
+                "
+                             formGroupName="{{ detailIndex }}">
+                <mat-form-field>
+                  <input matInput
+                         type="number"
+                         formControlName="productID"
+                         placeholder="ProductID" />
+                </mat-form-field>
+
+                <mat-form-field>
+                  <input type="number"
+                         step="0.01"
+                         matInput
+                         formControlName="unitPrice"
+                         placeholder="UnitPrice" />
+                </mat-form-field>
+
+                <mat-form-field>
+                  <input matInput
+                         type="number"
+                         formControlName="quantity"
+                         placeholder="Quantity" />
+                </mat-form-field>
+
+                <mat-form-field>
+                  <input matInput
+                         type="number"
+                         step="0.01"
+                         min="0"
+                         max="1"
+                         formControlName="discount"
+                         placeholder="Discount" />
+                </mat-form-field>
+
+                <button mat-icon-button
+                        (click)="removeDetail(detailIndex)"
+                        color="warn">
+                  <mat-icon>remove_circle</mat-icon>
+                </button>
+
+              </mat-list-item>
+            </mat-list>
+          </mat-card-content>
+
+          <mat-card-actions>
+            <button (click)="addDetails()"
+                    type="button"
+                    mat-button
+                    color="primary">
+              Add
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary" type="submit">
+          Submit
+        </button>
+
+        <button mat-button
+                color="primary"
+                type="button"
+                (click)="backToPreviousPage()">
+          Cancel
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

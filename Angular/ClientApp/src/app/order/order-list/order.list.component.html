@@ -1,0 +1,145 @@
+<h2 class="mat-h2">OrderList</h2>
+
+<button
+  mat-button
+  style="cursor: pointer;"
+  [routerLink]="['/order/create']"
+  routerLinkActive="active"
+  color="primary"
+>
+  Create
+</button>
+
+<mat-paginator
+    #paginatorTop
+    [length]="totalCount"
+    [pageIndex]="0"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 15]"
+    [showFirstLastButtons]=true
+    [hidePageSize]=false
+></mat-paginator>
+
+<table mat-table [dataSource]="orderListDataSource">
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
+    mat-row
+    *matRowDef="let row; columns: displayedColumns"
+    (click)="onSelect(row.orderID)"
+  ></tr>
+
+  <ng-container matColumnDef="orderID">
+    <th mat-header-cell *matHeaderCellDef>orderId</th>
+    <td mat-cell *matCellDef="let order">
+      <span matBadge="{{ order.detailCount }}" matBadgeOverlap="false">
+        {{ order.orderID }}
+      </span>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="customerID">
+    <th mat-header-cell *matHeaderCellDef>customerID</th>
+    <td mat-cell *matCellDef="let order">{{ order.customerID }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="employeeID">
+    <th mat-header-cell *matHeaderCellDef>employeeID</th>
+    <td mat-cell *matCellDef="let order">{{ order.employeeID }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="orderDate">
+    <th mat-header-cell *matHeaderCellDef>orderDate</th>
+    <td mat-cell *matCellDef="let order">
+      {{ order.orderDate | date: "yyyy-MM-dd" }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="requiredDate">
+    <th mat-header-cell *matHeaderCellDef>requiredDate</th>
+    <td mat-cell *matCellDef="let order">
+      {{ order.requiredDate | date: "yyyy-MM-dd" }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="shippedDate">
+    <th mat-header-cell *matHeaderCellDef>shippedDate</th>
+    <td mat-cell *matCellDef="let order">
+      {{ order.shippedDate | date: "yyyy-MM-dd" }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="shipVia">
+    <th mat-header-cell *matHeaderCellDef>shipVia</th>
+    <td mat-cell *matCellDef="let order">{{ order.shipVia }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="freight">
+    <th mat-header-cell *matHeaderCellDef>freight</th>
+    <td mat-cell *matCellDef="let order">{{ order.freight }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="shipName">
+    <th mat-header-cell *matHeaderCellDef>shipName</th>
+    <td mat-cell *matCellDef="let order">{{ order.shipName }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="shipAddress">
+    <th mat-header-cell *matHeaderCellDef>shipAddress</th>
+    <td mat-cell *matCellDef="let order">{{ order.shipAddress }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="shipCity">
+    <th mat-header-cell *matHeaderCellDef>shipCity</th>
+    <td mat-cell *matCellDef="let order">{{ order.shipCity }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="shipRegion">
+    <th mat-header-cell *matHeaderCellDef>shipRegion</th>
+    <td mat-cell *matCellDef="let order">{{ order.shipRegion }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="shipPostalCode">
+    <th mat-header-cell *matHeaderCellDef>shipPostalCode</th>
+    <td mat-cell *matCellDef="let order">{{ order.shipPostalCode }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="shipCountry">
+    <th mat-header-cell *matHeaderCellDef>shipCountry</th>
+    <td mat-cell *matCellDef="let order">{{ order.shipCountry }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="management">
+    <th mat-header-cell *matHeaderCellDef>
+      <span>management</span>
+    </th>
+    <td mat-cell *matCellDef="let order">
+      <button
+        (click)="goToDetailPage(order.orderID, true)"
+        mat-button
+        color="primary"
+      >
+        Detail
+      </button>
+      <button
+        mat-button
+        (click)="goToDetailPage(order.orderID, false)"
+        color="primary"
+      >
+        Edit
+      </button>
+      <button mat-button (click)="openDeleteDialog(order.orderID)" color="warn">
+        Delete
+      </button>
+    </td>
+  </ng-container>
+</table>
+
+<mat-paginator
+    #paginatorBottom
+    [length]="totalCount"
+    [pageIndex]="0"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 15]"
+    [showFirstLastButtons]=true
+    [hidePageSize]=false
+></mat-paginator>

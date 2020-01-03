@@ -1,0 +1,38 @@
+<mat-sidenav-container>
+  <mat-sidenav
+    #sideNav
+    mode="over"
+    fixedInViewport="true"
+    fixedTopGap="100"
+    fixedBottomGap="100"
+    disabledClose
+  >
+    <mat-nav-list>
+      <mat-list-item>
+        <a
+          matLine
+          routerLink=""
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="sideNav.close()"
+          >Home</a
+        >
+      </mat-list-item>
+      <mat-list-item>
+        <a
+          matLine
+          routerLink="order"
+          routerLinkActive="active"
+          (click)="sideNav.close()"
+          >Orders</a
+        >
+        <!-- <button mat-icon-button>
+        <mat-icon>info</mat-icon>
+      </button> -->
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

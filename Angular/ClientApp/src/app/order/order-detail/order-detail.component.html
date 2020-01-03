@@ -1,0 +1,324 @@
+<h2 class="mat-h2">{{ this.isReadOnly ? "OrderDetail" : "OrderEdit" }}</h2>
+
+<div *ngIf="this.orderForm">
+  <form [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm.value)">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title></mat-card-title>
+        <mat-card-subtitle></mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>
+          <mat-form-field>
+            <input
+              type="number"
+              matInput
+              formControlName="orderID"
+              placeholder="OrderID"
+              readonly
+            />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="customerID"
+              readonly="{{ this.isReadOnly }}"
+              placeholder="CustomerID"
+            />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input
+              type="number"
+              matInput
+              formControlName="employeeID"
+              readonly="{{ this.isReadOnly }}"
+              placeholder="EmployeeID"
+            />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field (click)="openDatePicker(OrderDatePicker)">
+            <input
+              matInput
+              [matDatepicker]="OrderDatePicker"
+              formControlName="orderDate"
+              readonly="{{ this.isReadOnly }}"
+              placeholder="OrderDate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [ngStyle]="checkHidden()"
+              [for]="OrderDatePicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker
+              #OrderDatePicker
+              [ngStyle]="checkHidden()"
+            ></mat-datepicker>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field (click)="openDatePicker(RequiredDatePicker)">
+            <input
+              matInput
+              [matDatepicker]="RequiredDatePicker"
+              formControlName="requiredDate"
+              readonly="{{ this.isReadOnly }}"
+              placeholder="RequiredDate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [ngStyle]="checkHidden()"
+              [for]="RequiredDatePicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker
+              #RequiredDatePicker
+              [ngStyle]="checkHidden()"
+            ></mat-datepicker>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field (click)="openDatePicker(ShippedDatePicker)">
+            <input
+              matInput
+              [matDatepicker]="ShippedDatePicker"
+              formControlName="shippedDate"
+              readonly="{{ this.isReadOnly }}"
+              placeholder="ShippedDate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [ngStyle]="checkHidden()"
+              [for]="ShippedDatePicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker
+              #ShippedDatePicker
+              [ngStyle]="checkHidden()"
+            ></mat-datepicker>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              formControlName="shipVia"
+              readonly="{{ this.isReadOnly }}"
+              placeholder="ShipVia"
+            />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              step="0.1"
+              formControlName="freight"
+              readonly="{{ this.isReadOnly }}"
+              placeholder="Freight"
+            />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="shipName"
+              readonly="{{ this.isReadOnly }}"
+              placeholder="ShipName"
+            />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="shipAddress"
+              readonly="{{ this.isReadOnly }}"
+              placeholder="ShipAddress"
+            />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="shipCity"
+              readonly="{{ this.isReadOnly }}"
+              placeholder="ShipCity"
+            />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="shipRegion"
+              readonly="{{ this.isReadOnly }}"
+              placeholder="ShipRegion"
+            />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="shipPostalCode"
+              readonly="{{ this.isReadOnly }}"
+              placeholder="ShipPostalCode"
+            />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="shipCountry"
+              readonly="{{ this.isReadOnly }}"
+              placeholder="ShipCountry"
+            />
+          </mat-form-field>
+        </p>
+
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Details</mat-card-title>
+            <mat-card-subtitle></mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content>
+            <mat-list formArrayName="details">
+              <mat-list-item
+                *ngFor="
+                  let detail of this.orderForm.get('details')?.controls;
+                  let detailIndex = index
+                "
+                formGroupName="{{ detailIndex }}"
+              >
+                <mat-form-field>
+                  <input
+                    matInput
+                    type="number"
+                    formControlName="productID"
+                    readonly="{{ this.isReadOnly }}"
+                    placeholder="ProductID"
+                  />
+                </mat-form-field>
+
+                <mat-form-field>
+                  <input
+                    type="number"
+                    step="0.01"
+                    matInput
+                    formControlName="unitPrice"
+                    readonly="{{ this.isReadOnly }}"
+                    placeholder="UnitPrice"
+                  />
+                </mat-form-field>
+
+                <mat-form-field>
+                  <input
+                    matInput
+                    type="number"
+                    formControlName="quantity"
+                    readonly="{{ this.isReadOnly }}"
+                    placeholder="Quantity"
+                  />
+                </mat-form-field>
+
+                <mat-form-field>
+                  <input
+                    matInput
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    max="1"
+                    formControlName="discount"
+                    readonly="{{ this.isReadOnly }}"
+                    placeholder="Discount"
+                  />
+                </mat-form-field>
+
+                <button
+                  mat-icon-button
+                  (click)="removeDetail(detailIndex)"
+                  [ngStyle]="checkHidden()"
+                  color="warn"
+                >
+                  <mat-icon>remove_circle</mat-icon>
+                </button>
+              </mat-list-item>
+            </mat-list>
+          </mat-card-content>
+
+          <mat-card-actions>
+            <button
+              *ngIf="!this.isReadOnly"
+              (click)="addDetails()"
+              type="button"
+              mat-button
+              color="primary"
+            >
+              Add
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          *ngIf="!this.isReadOnly"
+          mat-button
+          color="primary"
+          type="submit"
+        >
+          Submit
+        </button>
+
+        <button
+          *ngIf="!this.isReadOnly"
+          mat-button
+          color="primary"
+          type="button"
+          (click)="changeToReadOnlyMode()"
+        >
+          Cancel
+        </button>
+
+        <button
+          *ngIf="this.isReadOnly"
+          mat-button
+          color="primary"
+          type="button"
+          (click)="changeToEditMode()"
+        >
+          Edit
+        </button>
+
+        <button
+          *ngIf="this.isReadOnly"
+          mat-button
+          color="warn"
+          type="button"
+          (click)="deleteOrder()"
+        >
+          Delete
+        </button>
+
+        <button
+          *ngIf="this.isReadOnly"
+          mat-button
+          color="primary"
+          type="button"
+          (click)="backToPreviousPage()"
+        >
+          Back
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>
