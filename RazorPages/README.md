@@ -6,7 +6,7 @@
   - [Routing](#routing)
   - [Razor Page](#razor-page)
   - [&lt;PageName&gt;Model](#ltpagenamegtmodel)
-  - [View 與 PageModel 溝通](#view-%e8%88%87-pagemodel-%e6%ba%9d%e9%80%9a)
+  - [View 傳遞資料至 PageModel](#view-%e5%82%b3%e9%81%9e%e8%b3%87%e6%96%99%e8%87%b3-pagemodel)
     - [Get](#get)
     - [非 Get](#%e9%9d%9e-get)
     - [單一 Http Method 支援多個處理](#%e5%96%ae%e4%b8%80-http-method-%e6%94%af%e6%8f%b4%e5%a4%9a%e5%80%8b%e8%99%95%e7%90%86)
@@ -87,7 +87,7 @@
 
 ---
 
-## View 與 PageModel 溝通
+## View 傳遞資料至 PageModel
 
 ### Get
 
