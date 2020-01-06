@@ -1,0 +1,121 @@
+﻿@page
+@using SharedLibrary.Dto
+@model RazorPages.Pages.Order.Detail
+
+<h1>Order Detail</h1>
+<div class="form-group row">
+    <label asp-for="OrderDetail.OrderID" class="col-sm-2 col-form-label">OrderID</label>
+    <div class="col-sm-10">
+        <input asp-for="OrderDetail.OrderID" type="text" readonly class="form-control-plaintext">
+    </div>
+</div>
+<div class="form-group row">
+    <label asp-for="OrderDetail.CustomerID" class="col-sm-2 col-form-label">CustomerID</label>
+    <div class="col-sm-10">
+        <input asp-for="OrderDetail.CustomerID" type="text" readonly class="form-control-plaintext">
+    </div>
+</div>
+<div class="form-group row">
+    <label asp-for="OrderDetail.EmployeeID" class="col-sm-2 col-form-label">EmployeeID</label>
+    <div class="col-sm-10">
+        <input asp-for="OrderDetail.EmployeeID" type="text" readonly class="form-control-plaintext">
+    </div>
+</div>
+<div class="form-group row">
+    <label asp-for="OrderDetail.OrderDate" class="col-sm-2 col-form-label">OrderDate</label>
+    <div class="col-sm-10">
+        <input asp-for="OrderDetail.OrderDate" type="text" readonly class="form-control-plaintext">
+    </div>
+</div>
+<div class="form-group row">
+    <label asp-for="OrderDetail.RequiredDate" class="col-sm-2 col-form-label">RequiredDate</label>
+    <div class="col-sm-10">
+        <input asp-for="OrderDetail.RequiredDate" type="text" readonly class="form-control-plaintext">
+    </div>
+</div>
+<div class="form-group row">
+    <label asp-for="OrderDetail.ShippedDate" class="col-sm-2 col-form-label">ShippedDate</label>
+    <div class="col-sm-10">
+        <input asp-for="OrderDetail.ShippedDate" type="text" readonly class="form-control-plaintext">
+    </div>
+</div>
+<div class="form-group row">
+    <label asp-for="OrderDetail.ShipVia" class="col-sm-2 col-form-label">ShipVia</label>
+    <div class="col-sm-10">
+        <input asp-for="OrderDetail.ShipVia" type="text" readonly class="form-control-plaintext">
+    </div>
+</div>
+<div class="form-group row">
+    <label asp-for="OrderDetail.Freight" class="col-sm-2 col-form-label">Freight</label>
+    <div class="col-sm-10">
+        <input asp-for="OrderDetail.Freight" type="text" readonly class="form-control-plaintext">
+    </div>
+</div>
+<div class="form-group row">
+    <label asp-for="OrderDetail.ShipName" class="col-sm-2 col-form-label">ShipName</label>
+    <div class="col-sm-10">
+        <input asp-for="OrderDetail.ShipName" type="text" readonly class="form-control-plaintext">
+    </div>
+</div>
+<div class="form-group row">
+    <label asp-for="OrderDetail.ShipAddress" class="col-sm-2 col-form-label">ShipAddress</label>
+    <div class="col-sm-10">
+        <input asp-for="OrderDetail.ShipAddress" type="text" readonly class="form-control-plaintext">
+    </div>
+</div>
+<div class="form-group row">
+    <label asp-for="OrderDetail.ShipCity" class="col-sm-2 col-form-label">ShipCity</label>
+    <div class="col-sm-10">
+        <input asp-for="OrderDetail.ShipCity" type="text" readonly class="form-control-plaintext">
+    </div>
+</div>
+<div class="form-group row">
+    <label asp-for="OrderDetail.ShipRegion" class="col-sm-2 col-form-label">ShipRegion</label>
+    <div class="col-sm-10">
+        <input asp-for="OrderDetail.ShipRegion" type="text" readonly class="form-control-plaintext">
+    </div>
+</div>
+<div class="form-group row">
+    <label asp-for="OrderDetail.ShipPostalCode" class="col-sm-2 col-form-label">ShipPostalCode</label>
+    <div class="col-sm-10">
+        <input asp-for="OrderDetail.ShipPostalCode" type="text" readonly class="form-control-plaintext">
+    </div>
+</div>
+<div class="form-group row">
+    <label asp-for="OrderDetail.ShipCountry" class="col-sm-2 col-form-label">ShipCountry</label>
+    <div class="col-sm-10">
+        <input asp-for="OrderDetail.ShipCountry" type="text" readonly class="form-control-plaintext">
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Details</label>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>@(nameof(OrderDetailDto.ProductID))</th>
+        <th>@(nameof(OrderDetailDto.UnitPrice))</th>
+        <th>@(nameof(OrderDetailDto.Quantity))</th>
+        <th>@(nameof(OrderDetailDto.Discount))</th>
+    </tr>
+    </thead>
+    <tbody>
+    @for (var index = 0 ; index < Model.OrderDetail.Details?.Length ; index++)
+    {
+        <tr>
+            <td>
+                <input asp-for="OrderDetail.Details[index].ProductID" readonly class="form-control-plaintext"/>
+            </td>
+            <td>
+                <input asp-for="OrderDetail.Details[index].UnitPrice" readonly class="form-control-plaintext"/>
+            </td>
+            <td>
+                <input asp-for="OrderDetail.Details[index].Quantity" readonly class="form-control-plaintext"/>
+            </td>
+            <td>
+                <input asp-for="OrderDetail.Details[index].Discount" readonly class="form-control-plaintext"/>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

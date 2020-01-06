@@ -3,13 +3,14 @@
 - [Razor Pages 技術分享](#razor-pages-%e6%8a%80%e8%a1%93%e5%88%86%e4%ba%ab)
   - [環境](#%e7%92%b0%e5%a2%83)
   - [啟用 Razor Pages](#%e5%95%9f%e7%94%a8-razor-pages)
-  - [Routing](#routing)
+  - [一般 Routing](#%e4%b8%80%e8%88%ac-routing)
   - [Razor Page](#razor-page)
   - [&lt;PageName&gt;Model](#ltpagenamegtmodel)
   - [View 傳遞資料至 PageModel](#view-%e5%82%b3%e9%81%9e%e8%b3%87%e6%96%99%e8%87%b3-pagemodel)
     - [Get](#get)
     - [非 Get](#%e9%9d%9e-get)
     - [單一 Http Method 支援多個處理](#%e5%96%ae%e4%b8%80-http-method-%e6%94%af%e6%8f%b4%e5%a4%9a%e5%80%8b%e8%99%95%e7%90%86)
+  - [參數化 Routing](#%e5%8f%83%e6%95%b8%e5%8c%96-routing)
   - [Razor Pages 與 MVC 的比較](#razor-pages-%e8%88%87-mvc-%e7%9a%84%e6%af%94%e8%bc%83)
   - [參考資料](#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99)
 
@@ -37,7 +38,7 @@
 
 ---
 
-## Routing
+## 一般 Routing
 
 範例
 
@@ -121,6 +122,60 @@
 ### 單一 Http Method 支援多個處理
 
 - [asp-page-handler](https://www.learnrazorpages.com/razor-pages/handler-methods)
+
+---
+
+## [參數化 Routing](https://www.learnrazorpages.com/razor-pages/routing)
+
+- 給定參數化規則
+
+  - 透過 @Page 給定
+
+    ```csharp
+    @page "{Id}"
+    ```
+
+  - 透過 AddRazorPagesOptions 給定
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddRazorPages()
+                .AddRazorPagesOptions(options =>
+                                        {
+                                            options.Conventions.AddPageRoute("/Order/Detail", "/Order/Detail/{Id}");
+                                        });
+    }
+    ```
+
+- 取出參數值
+
+  - 以 BindProperty 來取值
+
+    ```csharp
+    public class Detail : PageModel
+    {
+        [BindProperty(SupportsGet = true)]
+        public string Id { get; set; }
+        public void OnGet()
+        {
+        }
+    }
+    ```
+
+  - 以 RouteData.Values[""] 來取值
+
+    ```csharp
+    public class Detail : PageModel
+    {
+        public string Id { get; set; }
+
+        public void OnGet()
+        {
+            Id = RouteData.Values["Id"]?.ToString();
+        }
+    }
+    ```
 
 ---
 

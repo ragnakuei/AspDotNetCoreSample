@@ -23,8 +23,11 @@ namespace RazorPages
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddBusinessLogicServices();
-            services.AddRazorPages();
-
+            services.AddRazorPages()
+                    .AddRazorPagesOptions(options =>
+                                          {
+                                              options.Conventions.AddPageRoute("/Order/Detail", "/Order/Detail/{Id}");
+                                          });
             services.AddControllers();
         }
 
