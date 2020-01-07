@@ -6,7 +6,7 @@ namespace BusinessLogic.Order
     {
         OrderListDto GetOrderList(int index, int pageIndex);
         OrderDto GetOrder(int orderId);
-        void UpdateOrder(int orderId, OrderDto orderDto);
+        void UpdateOrder(OrderDto orderDto);
         int CreateOrder(OrderDto orderDto);
         void DeleteOrder(int orderId);
     }

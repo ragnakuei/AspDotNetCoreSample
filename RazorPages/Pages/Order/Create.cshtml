@@ -1,0 +1,119 @@
+﻿@page
+@using SharedLibrary.Dto
+@model RazorPages.Pages.Order.Create
+
+<h1>@ViewData["Title"]</h1>
+<form method="post">
+    <div class="form-group row">
+        <label asp-for="OrderDetail.CustomerID" class="col-sm-2 col-form-label">CustomerID</label>
+        <div class="col-sm-10">
+            <input asp-for="OrderDetail.CustomerID" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="OrderDetail.EmployeeID" class="col-sm-2 col-form-label">EmployeeID</label>
+        <div class="col-sm-10">
+            <input asp-for="OrderDetail.EmployeeID" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="OrderDetail.OrderDate" class="col-sm-2 col-form-label">OrderDate</label>
+        <div class="col-sm-10">
+            <input asp-for="OrderDetail.OrderDate" type="date" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="OrderDetail.RequiredDate" class="col-sm-2 col-form-label">RequiredDate</label>
+        <div class="col-sm-10">
+            <input asp-for="OrderDetail.RequiredDate" type="date" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="OrderDetail.ShippedDate" class="col-sm-2 col-form-label">ShippedDate</label>
+        <div class="col-sm-10">
+            <input asp-for="OrderDetail.ShippedDate" type="date" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="OrderDetail.ShipVia" class="col-sm-2 col-form-label">ShipVia</label>
+        <div class="col-sm-10">
+            <input asp-for="OrderDetail.ShipVia" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="OrderDetail.Freight" class="col-sm-2 col-form-label">Freight</label>
+        <div class="col-sm-10">
+            <input asp-for="OrderDetail.Freight" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="OrderDetail.ShipName" class="col-sm-2 col-form-label">ShipName</label>
+        <div class="col-sm-10">
+            <input asp-for="OrderDetail.ShipName" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="OrderDetail.ShipAddress" class="col-sm-2 col-form-label">ShipAddress</label>
+        <div class="col-sm-10">
+            <input asp-for="OrderDetail.ShipAddress" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="OrderDetail.ShipCity" class="col-sm-2 col-form-label">ShipCity</label>
+        <div class="col-sm-10">
+            <input asp-for="OrderDetail.ShipCity" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="OrderDetail.ShipRegion" class="col-sm-2 col-form-label">ShipRegion</label>
+        <div class="col-sm-10">
+            <input asp-for="OrderDetail.ShipRegion" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="OrderDetail.ShipPostalCode" class="col-sm-2 col-form-label">ShipPostalCode</label>
+        <div class="col-sm-10">
+            <input asp-for="OrderDetail.ShipPostalCode" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="OrderDetail.ShipCountry" class="col-sm-2 col-form-label">ShipCountry</label>
+        <div class="col-sm-10">
+            <input asp-for="OrderDetail.ShipCountry" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Details</label>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>@(nameof(OrderDetailDto.ProductID))</th>
+            <th>@(nameof(OrderDetailDto.UnitPrice))</th>
+            <th>@(nameof(OrderDetailDto.Quantity))</th>
+            <th>@(nameof(OrderDetailDto.Discount))</th>
+        </tr>
+        </thead>
+        <tbody>
+        @for (var index = 0 ; index < Model.OrderDetail.Details?.Length ; index++)
+        {
+            <tr>
+                <td>
+                    <input asp-for="OrderDetail.Details[index].ProductID" class="form-control"/>
+                </td>
+                <td>
+                    <input asp-for="OrderDetail.Details[index].UnitPrice" class="form-control"/>
+                </td>
+                <td>
+                    <input asp-for="OrderDetail.Details[index].Quantity" class="form-control"/>
+                </td>
+                <td>
+                    <input asp-for="OrderDetail.Details[index].Discount" class="form-control"/>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <button class="btn btn-primary" type="submit">Submit</button>
+    <a class="btn btn-primary" asp-page="/order/list" role="button">Cancel</a>
+</form>

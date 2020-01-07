@@ -235,7 +235,7 @@ select @maxOrderId
             return newOrderId;
         }
 
-        public void UpdateOrder(int orderId, OrderDto orderDto)
+        public void UpdateOrder(OrderDto orderDto)
         {
             using (var connection = new SqlConnection(_configurationService.GetConnectionString("Northwind")))
             {

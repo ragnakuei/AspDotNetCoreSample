@@ -22,7 +22,7 @@ namespace RazorPages.Pages.Order
         
         public IActionResult OnGet()
         {
-            
+            ViewData["Title"] = "Order List";   
             return Page();
         }
     }

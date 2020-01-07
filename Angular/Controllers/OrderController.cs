@@ -39,7 +39,7 @@ namespace AngularWithAspNetCoreWebApiDemo.Controllers
         [HttpPut, Route("{orderId:int}")]
         public IActionResult UpdateOrder(int orderId, OrderDto orderDto)
         {
-            _orderService.UpdateOrder(orderId, orderDto);
+            _orderService.UpdateOrder(orderDto);
             return Ok(orderId);
         }
 

@@ -27,6 +27,7 @@ namespace RazorPages
                     .AddRazorPagesOptions(options =>
                                           {
                                               options.Conventions.AddPageRoute("/Order/Detail", "/Order/Detail/{Id}");
+                                              options.Conventions.AddPageRoute("/Order/Edit", "/Order/Edit/{Id}");
                                           });
             services.AddControllers();
         }

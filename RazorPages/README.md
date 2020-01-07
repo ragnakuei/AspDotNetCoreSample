@@ -6,9 +6,9 @@
   - [一般 Routing](#%e4%b8%80%e8%88%ac-routing)
   - [Razor Page](#razor-page)
   - [&lt;PageName&gt;Model](#ltpagenamegtmodel)
-  - [View 傳遞資料至 PageModel](#view-%e5%82%b3%e9%81%9e%e8%b3%87%e6%96%99%e8%87%b3-pagemodel)
+  - [View 與 PageModel 的溝通](#view-%e8%88%87-pagemodel-%e7%9a%84%e6%ba%9d%e9%80%9a)
     - [Get](#get)
-    - [非 Get](#%e9%9d%9e-get)
+    - [Post 至 PageModel](#post-%e8%87%b3-pagemodel)
     - [單一 Http Method 支援多個處理](#%e5%96%ae%e4%b8%80-http-method-%e6%94%af%e6%8f%b4%e5%a4%9a%e5%80%8b%e8%99%95%e7%90%86)
   - [參數化 Routing](#%e5%8f%83%e6%95%b8%e5%8c%96-routing)
   - [Razor Pages 與 MVC 的比較](#razor-pages-%e8%88%87-mvc-%e7%9a%84%e6%af%94%e8%bc%83)
@@ -82,13 +82,12 @@
 
   透過 BindProperty Attribute 給定
 
-  - 主要用在非 Http Get
-
   - 用於 Client 端會變更的 Property
+  - Binding Property Setter 存取權限要為 public
 
 ---
 
-## View 傳遞資料至 PageModel
+## View 與 PageModel 的溝通
 
 ### Get
 
@@ -112,7 +111,7 @@
 
   其餘與 MVC 相同。
 
-### 非 Get
+### Post 至 PageModel
 
 - Http Post Request 會尋找下面的 Method
 

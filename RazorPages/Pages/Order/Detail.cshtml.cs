@@ -12,16 +12,43 @@ namespace RazorPages.Pages.Order
         [BindProperty(SupportsGet = true)]
         public int Id { get; set; }
 
+        [BindProperty]
+        public OrderDto OrderDetail { get; set; }
+
         public Detail(IOrderService orderService)
         {
             _orderService = orderService;
         }
-        
-        public OrderDto OrderDetail { get; private set; }
-        
+
         public void OnGet()
         {
+            AssignTitle();
             OrderDetail = _orderService.GetOrder(Id);
+        }
+        
+        public IActionResult OnPost()
+        {
+            _orderService.UpdateOrder(OrderDetail);
+            return RedirectToPage("/Order/Detail", new { Id = Id});
+        }
+
+        private void AssignTitle()
+        {
+            var pageRoute = RouteData.Values["page"];
+            if (pageRoute.Equals("/Order/Detail"))
+            {
+                ViewData["Title"] = "Order Detail";
+            }
+
+            if (pageRoute.Equals("/Order/Edit"))
+            {
+                ViewData["Title"] = "Order Edit";
+            }
+            
+            if (pageRoute.Equals("/Order/Create"))
+            {
+                ViewData["Title"] = "Order Create";
+            }
         }
     }
 }
