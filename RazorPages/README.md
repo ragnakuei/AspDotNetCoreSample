@@ -11,7 +11,6 @@
     - [Post 至 PageModel](#post-%e8%87%b3-pagemodel)
     - [單一 Http Method 支援多個處理](#%e5%96%ae%e4%b8%80-http-method-%e6%94%af%e6%8f%b4%e5%a4%9a%e5%80%8b%e8%99%95%e7%90%86)
   - [參數化 Routing](#%e5%8f%83%e6%95%b8%e5%8c%96-routing)
-  - [Razor Pages 與 MVC 的比較](#razor-pages-%e8%88%87-mvc-%e7%9a%84%e6%af%94%e8%bc%83)
   - [參考資料](#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99)
 
 ---
@@ -177,16 +176,6 @@
     ```
 
 ---
-
-## Razor Pages 與 MVC 的比較
-
-| 項目                                         | Razor Pages                               | MVC                                 |
-| -------------------------------------------- | ----------------------------------------- | ----------------------------------- |
-| \<PageName>Model / Controller 與 View 的關係 | 一個 \<PageName>Model 只對應至一個 cshtml | 一個 Controller 可對應至多個 cshtml |
-|                                              |                                           |                                     |
-|                                              |                                           |                                     |
-|                                              |                                           |                                     |
-|                                              |                                           |                                     |
 
 ## 參考資料
 
