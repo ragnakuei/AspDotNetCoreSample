@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "BusinessLo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{0EFDE837-415C-4521-A35B-74F35E873382}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorPages", "RazorPages\RazorPages.csproj", "{D6415832-916F-4BB1-8E04-AF092388002C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPages", "RazorPages\RazorPages.csproj", "{D6415832-916F-4BB1-8E04-AF092388002C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vue", "Vue\Vue.csproj", "{197B17E4-23EB-4787-B976-DF381DCEFEF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D6415832-916F-4BB1-8E04-AF092388002C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6415832-916F-4BB1-8E04-AF092388002C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6415832-916F-4BB1-8E04-AF092388002C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{197B17E4-23EB-4787-B976-DF381DCEFEF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{197B17E4-23EB-4787-B976-DF381DCEFEF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{197B17E4-23EB-4787-B976-DF381DCEFEF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{197B17E4-23EB-4787-B976-DF381DCEFEF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
