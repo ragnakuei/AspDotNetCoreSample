@@ -1,5 +1,24 @@
-﻿@page
+﻿@* asp-page-handler *@
+@page
 @model Sample03
 
 <h1>Sample0</h1>
 <h3 class="clearfix">@Model.Message</h3>
+
+<div class="row">
+    <form method="get">
+        <button class="btn btn-default">Get</button>
+    </form>
+    <form asp-page-handler="" method="post">
+        <button class="btn btn-default">Post</button>
+    </form>
+    <form asp-page-handler="edit" method="post">
+        <button class="btn btn-default">PostEdit</button>
+    </form>
+    <form asp-page-handler="delete" method="post">
+        <button class="btn btn-default">PostDelete</button>
+    </form>
+    <form asp-page-handler="view" method="post">
+        <button class="btn btn-default">PostView</button>
+    </form>
+</div>

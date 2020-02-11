@@ -23,7 +23,7 @@
 
 ## 啟用 Razor Pages
 
-- 新增 Service 至 Asp.NET Core DependencyInjection Service 中
+- 新增 Service 至 Asp.NET Core Dependency Injection Service 中
 
   Startup.cs > ConfigureServices() 加上以下語法
 
@@ -122,7 +122,7 @@
 - [asp-page-handler](https://www.learnrazorpages.com/razor-pages/handler-methods)
 
 ---
-
+asp-page-handler
 ## [參數化 Routing](https://www.learnrazorpages.com/razor-pages/routing)
 
 - 給定參數化規則

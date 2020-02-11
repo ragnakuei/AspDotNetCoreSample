@@ -4,9 +4,10 @@ namespace RazorPages.Pages.Sample
 {
     public class Sample03 : PageModel
     {
-        public string Message { get; set; } = "Initial Request";
+        public string Message { get; set; }
         public void OnGet()
         {
+            Message = "Get";
         }
         public void OnPost()
         {
