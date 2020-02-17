@@ -1,19 +1,29 @@
 ﻿<template>
     <div>
-        <clickCountButton v-bind:initialCounter="10" />
-        <clickCountButton v-bind:initialCounter="20" />
+        <checkedButton v-bind:id="1" 
+                       v-bind:initialChecked="false" 
+                       v-on:onButtonClick="checkedButtonClick" />
+        
+        <checkedButton v-bind:id="2" 
+                       v-bind:initialChecked="true" 
+                       v-on:onButtonClick="checkedButtonClick" />
     </div>
 </template>
 
 <script>
-    import clickCountButton from "@/views/ClickCountButton.vue"
+    import checkedButton from "@/views/CheckedButton.vue"
     
     export default {
         components : {
-            clickCountButton
+            checkedButton
         },
         data() {
             return {
+            }
+        },
+        methods : {
+            checkedButtonClick : function(target) {
+                console.log(target);
             }
         }
     } 
