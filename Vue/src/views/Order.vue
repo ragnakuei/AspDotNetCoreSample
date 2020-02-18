@@ -1,11 +1,9 @@
 ﻿<template>
     <div>
         <checkedButton v-for="value in buttons"
-                       v-bind:id="'checkedButton'+value.id"
                        ref="checkedButtons"
-                       v-bind:itemId="value.id" 
-                       v-bind:initialChecked="value.isChecked" 
-                       v-on:onButtonClick="checkedButtonClick" />
+                       v-bind:id="value.id" 
+                       v-bind:initialChecked="value.isChecked" />
     </div>
 </template>
 
@@ -28,18 +26,7 @@
             }
         },
         methods : {
-            checkedButtonClick : function(target) {
-                console.log(target);
-
-                // 取出 this.$refs 的資料
-                console.log(this.$refs["checkedButtons"]);
-
-                // 一次取出指定 component 內所有資料，省去儲存子類狀態
-                this.$refs["checkedButtons"].forEach(element => {
-                    console.log(element.itemId);                    
-                    console.log(element.isChecked);                    
-                });
-            }
+           
         }
     } 
 </script>

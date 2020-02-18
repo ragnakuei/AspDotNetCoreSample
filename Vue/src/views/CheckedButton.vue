@@ -7,7 +7,7 @@
         name: "checkedButton",
         props: {
             initialChecked : Boolean,
-            itemId: Number,
+            id: Number,
         },
         data() {
             return {
@@ -20,11 +20,6 @@
                 // console.log(t);
                 
                 this.isChecked = !this.isChecked;
-                
-                this.$emit("onButtonClick", {
-                    id: this.itemId,
-                    isChecked: this.isChecked,
-                });
             }
         }
     }
