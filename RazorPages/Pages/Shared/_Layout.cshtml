@@ -25,15 +25,32 @@
                         <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                     </li>
                     <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                        Sample
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a asp-page="/Sample/SameFile" class="dropdown-item">SameFile</a>
+                        </li>
+                        <li>
+                            <a asp-page="/Sample/HttpMethods" class="dropdown-item">HttpMethods</a>
+                        </li>
+                        <li>
+                            <a asp-page="/Sample/PageHandlers" class="dropdown-item">PageHandlers</a>
+                        </li>
+                        <li>
+                            <a asp-page="/Sample/QueryString" class="dropdown-item">QueryString</a>
+                        </li>
+                    </ul>
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                            Sample
+                            Post Sample
                         </a>
                         <div class="dropdown-menu">
-                            <a asp-page="/Sample/01" class="dropdown-item">Sample01</a>
-                            <a asp-page="/Sample/Sample02" class="dropdown-item">Sample02</a>
-                            <a asp-page="/Sample/Sample03" class="dropdown-item">Sample03</a>
-                            <a asp-page="/Sample/Sample04" class="dropdown-item">Sample04</a>
-                            <a asp-page="/Sample/Sample05" class="dropdown-item">Sample05</a>
+                            <a asp-page="/Sample/Post/Complex" class="dropdown-item">Complex</a>
+                            <a asp-page="/Sample/Post/Sample01" class="dropdown-item">Sample01</a>
+                            <a asp-page="/Sample/Post/Sample02" class="dropdown-item">Sample02</a>
+                            <a asp-page="/Sample/Post/Sample03" class="dropdown-item">Sample03</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -64,8 +81,8 @@
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/site.js" asp-append-version=" true "></script>
 
-@RenderSection("Scripts", required : false)
+@RenderSection( "Scripts", required : false )
 </body>
 </html>

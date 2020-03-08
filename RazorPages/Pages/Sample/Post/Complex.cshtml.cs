@@ -1,11 +1,10 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace RazorPages.Pages.Sample
+namespace RazorPages.Pages.Sample.Post
 {
-    public class Sample05 : PageModel
+    public class Complex : PageModel
     {
         [BindProperty]
         public Order Order { get; set; }
@@ -21,7 +20,6 @@ namespace RazorPages.Pages.Sample
         
         public IActionResult OnPost()
         {
-            ModelState.Remove(nameof(Order));
             return Page();
         }
     }

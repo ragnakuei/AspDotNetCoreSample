@@ -1,0 +1,25 @@
+﻿@page
+@model QueryString
+
+<h1>QueryString</h1>
+<form>
+    <div class="form-group">
+        <label class="col-sm-2 col-form-label">PageNo:@Model.PageNo</label>
+    </div>
+
+    @{
+        var Prev = new Dictionary<string, string>
+                   {
+                       { nameof(Model.PageNo), (Model.PageNo - 1).ToString() }
+                   };
+        var Next = new Dictionary<string, string>
+                   {
+                       { nameof(Model.PageNo), (Model.PageNo + 1).ToString() }
+                   };
+    }
+    <div class="form-group row">
+        <a asp-all-route-data="Prev" >@nameof(Prev)</a>
+        &nbsp;
+        <a asp-all-route-data="Next" >@nameof(Next)</a>
+    </div>
+</form>

@@ -1,0 +1,28 @@
+@* Http Methods *@
+@page
+@model HttpMethods
+
+<h1>HttpMethods</h1>
+<h3 class="clearfix">@Model.Message</h3>
+
+<div class="row">
+    <form method="get">
+        <button class="btn btn-default">Get</button>
+    </form>
+    <form method="post">
+        <button class="btn btn-default">Post</button>
+    </form>
+    @* 不支援 Delete *@
+    <form method="delete">
+        <button class="btn btn-default">Delete</button>
+    </form>
+    @* 不支援 Put *@
+    <form method="put">
+        <button class="btn btn-default">Put</button>
+    </form>
+    @* 不支援 Patch *@
+    <form method="patch">
+        <button class="btn btn-default">Patch</button>
+    </form>
+    @* 如果想用以上的型式，可以用 asp-page-handler 來處理 *@
+</div>

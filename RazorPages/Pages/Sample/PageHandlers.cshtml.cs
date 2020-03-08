@@ -2,26 +2,31 @@
 
 namespace RazorPages.Pages.Sample
 {
-    public class Sample03 : PageModel
+    public class PageHandlers : PageModel
     {
         public string Message { get; set; }
+
         public void OnGet()
         {
             Message = "Get";
         }
+
         public void OnPost()
         {
             Message = "Form Posted";
         }
+
         public void OnPostDelete()
         {
             Message = "Delete handler fired";
         }
-        public void OnPostEdit(int id)
+
+        public void OnPostEdit()
         {
             Message = "Edit handler fired";
         }
-        public void OnPostView(int id)
+
+        public void OnPostView()
         {
             Message = "View handler fired";
         }

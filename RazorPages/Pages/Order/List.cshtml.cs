@@ -9,16 +9,8 @@ namespace RazorPages.Pages.Order
 {
     public class List : PageModel
     {
-        private readonly IOrderService _orderService;
-
-        public List(IOrderService orderService)
-        {
-            _orderService = orderService;
-        }
-        
         [BindProperty]
         public OrderDto Order { get; set; }
-        
         
         public IActionResult OnGet()
         {

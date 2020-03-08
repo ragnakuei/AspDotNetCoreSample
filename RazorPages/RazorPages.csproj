@@ -13,12 +13,6 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Pages\Sample\Sample04.cshtml.cs">
-      <DependentUpon>Sample04.cshtml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
 
 
 </Project>
