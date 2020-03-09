@@ -1,0 +1,20 @@
+﻿@page
+@model Sample02
+
+<h1>Sample02</h1>
+<form method="post">
+    <div asp-validation-summary="ModelOnly " class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="ValidationModel.Name" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="ValidationModel.Name" class="form-control">
+            <span asp-validation-for="ValidationModel.Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-primary"/>
+    </div>
+</form>
+
+<p>Hello @Model.ValidationModel.Name </p>
