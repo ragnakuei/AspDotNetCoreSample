@@ -344,3 +344,16 @@ WHERE OrderId = @orderId
         }
     }
 }
+
+// IF TYPE_ID('dbo.ut_OrderDetail') IS NOT NULL
+//     DROP TYPE dbo.ut_OrderDetail
+// GO
+//
+// CREATE TYPE dbo.ut_OrderDetail AS TABLE
+// (
+//     ProductID int                NOT NULL,
+//     UnitPrice money    DEFAULT 0 NOT NULL,
+//     Quantity  smallint DEFAULT 1 NOT NULL,
+//     Discount  real     DEFAULT 0 NOT NULL
+// )
+// GO
