@@ -8,6 +8,9 @@ namespace RazorPages.Pages.Sample.Post
     {
         public string Name { get; set; }
         
+        /// <remarks>
+        /// 這個方式不建議用
+        /// </remarks>
         public void OnPost(string name)
         {
             Name = name;

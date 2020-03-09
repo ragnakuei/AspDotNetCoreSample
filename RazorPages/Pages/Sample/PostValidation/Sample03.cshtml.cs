@@ -6,7 +6,6 @@ namespace RazorPages.Pages.Sample.PostValidation
 {
     public class Sample03 : PageModel
     {
-        
         public PostValidationSample03Model ValidationModel { get; set; }
 
         public void OnGet()
@@ -14,6 +13,9 @@ namespace RazorPages.Pages.Sample.PostValidation
             ValidationModel = new PostValidationSample03Model();
         }
         
+        /// <remarks>
+        /// 這個方式可用於 MVC ，但 RazorPage 目前不支援
+        /// </remarks>
         public IActionResult OnPost(PostValidationSample03Model t)
         {
             if(t.Name.Length < 2)
