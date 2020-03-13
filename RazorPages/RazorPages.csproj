@@ -13,6 +13,12 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Routing\Custom.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Routing\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Routing\Parameter.cshtml" />
+  </ItemGroup>
+
 
 
 </Project>

@@ -25,32 +25,52 @@
                         <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                     </li>
                     <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                        Sample
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a asp-page="/Sample/SameFile" class="dropdown-item">SameFile</a>
-                        </li>
-                        <li>
-                            <a asp-page="/Sample/HttpMethods" class="dropdown-item">HttpMethods</a>
-                        </li>
-                        <li>
-                            <a asp-page="/Sample/PageHandlers" class="dropdown-item">PageHandlers</a>
-                        </li>
-                        <li>
-                            <a asp-page="/Sample/QueryString" class="dropdown-item">QueryString</a>
-                        </li>
-                    </ul>
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                            Routing
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a asp-page="/Sample/Routing/Index" class="dropdown-item">Index</a>
+                            </li>
+                            <li>
+                                <a asp-page="/Sample/Routing/Custom" class="dropdown-item">Custom</a>
+                            </li>
+                            <li>
+                                <a asp-page="/Sample/Routing/Test/Custom" class="dropdown-item">Test Custom</a>
+                            </li>
+                            <li>
+                                <a asp-page="/Sample/Routing/Parameter" asp-route-id="1" class="dropdown-item">Parameter 1</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                            Sample
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a asp-page="/Sample/SameFile" class="dropdown-item">SameFile</a>
+                            </li>
+                            <li>
+                                <a asp-page="/Sample/HttpMethods" class="dropdown-item">HttpMethods</a>
+                            </li>
+                            <li>
+                                <a asp-page="/Sample/PageHandlers" class="dropdown-item">PageHandlers</a>
+                            </li>
+                            <li>
+                                <a asp-page="/Sample/QueryString" class="dropdown-item">QueryString</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                             Post Sample
                         </a>
                         <div class="dropdown-menu">
-                            <a asp-page="/Sample/Post/Complex" class="dropdown-item">Complex</a>
                             <a asp-page="/Sample/Post/Sample01" class="dropdown-item">Sample01</a>
                             <a asp-page="/Sample/Post/Sample02" class="dropdown-item">Sample02</a>
                             <a asp-page="/Sample/Post/Sample03" class="dropdown-item">Sample03</a>
+                            <a asp-page="/Sample/Post/Complex" class="dropdown-item">Complex</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
