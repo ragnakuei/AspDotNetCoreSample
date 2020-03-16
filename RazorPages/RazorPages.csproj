@@ -17,6 +17,7 @@
     <_ContentIncludedByDefault Remove="Pages\Routing\Custom.cshtml" />
     <_ContentIncludedByDefault Remove="Pages\Routing\Index.cshtml" />
     <_ContentIncludedByDefault Remove="Pages\Routing\Parameter.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Ajax\Sample01.cshtml" />
   </ItemGroup>
 
 

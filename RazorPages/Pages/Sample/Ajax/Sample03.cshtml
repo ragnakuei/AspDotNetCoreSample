@@ -1,0 +1,17 @@
+@page
+@model Sample03
+<a href=""
+   data-ajax="true"
+   data-ajax-method="get"
+   data-ajax-url="/sample/ajax/Sample03?handler=Partial"
+   data-ajax-loading="#spinner"
+   data-ajax-update="#panel">
+    Click here
+</a>
+<span id="spinner" style="display:none;"><i class="fas fa-spinner fa-spin"></i></span>
+<div id="panel"></div>
+
+@section scripts{
+    <link href="/fontawesome/css/all.min.css" rel="stylesheet">
+    <partial name="_JqueryAjaxUnobtrusive" />
+}

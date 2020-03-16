@@ -1,0 +1,14 @@
+@page
+@model Sample02
+<a href="#"
+   data-ajax="true"
+   data-ajax-method="get"
+   data-ajax-url="/sample/ajax/Sample02?handler=Partial"
+   data-ajax-update="#panel">
+    Click here
+</a>
+<div id="panel"></div>
+
+@section scripts{
+    <partial name="_JqueryAjaxUnobtrusive" />
+}

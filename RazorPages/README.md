@@ -14,6 +14,8 @@
     - [Post 至 PageModel](#post-%e8%87%b3-pagemodel)
     - [單一 Http Method 支援多個處理](#%e5%96%ae%e4%b8%80-http-method-%e6%94%af%e6%8f%b4%e5%a4%9a%e5%80%8b%e8%99%95%e7%90%86)
   - [參考資料](#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99)
+  - [Ajax](#ajax)
+  - [Partial Pages](#partial-pages)
 
 ---
 
@@ -186,3 +188,24 @@
 ## 參考資料
 
 - [Learn Razor Pages](https://www.learnrazorpages.com/)
+
+## Ajax
+
+可搭配 [jquery-ajax-unobtrusive](https://www.jsdelivr.com/package/npm/jquery-ajax-unobtrusive) 及 asp-page-handler
+
+## [Partial Pages](https://www.learnrazorpages.com/razor-pages/partial-pages)
+
+- 回傳資料型態為 PartialViewResult
+
+- PartialViewResult.ViewName 為 _HelloWorldPartial 時，就會尋找 _HelloWorldPartial.cshtml 來回傳內容
+
+```csharp
+public IActionResult OnGetPartial()
+{
+    return new PartialViewResult
+    {
+        ViewName = "_HelloWorldPartial",
+        ViewData = this.ViewData
+    };
+}
+```
