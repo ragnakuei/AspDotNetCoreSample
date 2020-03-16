@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System.Collections.Generic;
+using System.Configuration;
 using Microsoft.Extensions.Configuration;
 
 namespace BusinessLogic.Configuration
@@ -12,9 +13,19 @@ namespace BusinessLogic.Configuration
             _configuration = configuration;
         }
         
-        public string GetConnectionString(string name)
+        private Dictionary<string, string> _connectionStrings = new Dictionary<string, string>();
+        
+        public string ConnectionString(string name)
         {
-            return _configuration.GetConnectionString(name);
+            if ( _connectionStrings.TryGetValue( name, out string result ) )
+            {
+                return result;
+            }
+            
+            var connectionString = _configuration.GetConnectionString(name);
+            _connectionStrings.Add(name, connectionString);
+
+            return connectionString;
         }
     }
 }

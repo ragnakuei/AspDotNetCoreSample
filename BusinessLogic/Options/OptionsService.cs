@@ -18,7 +18,7 @@ namespace BusinessLogic.Options
 
         public IEnumerable<CustomerOption> GetCustomers(string keyword)
         {
-            using (var connection = new SqlConnection(_configurationService.GetConnectionString("Northwind")))
+            using (var connection = new SqlConnection(_configurationService.ConnectionString("Northwind")))
             {
                 var sql = @"
 SELECT c.CustomerID, c.CompanyName

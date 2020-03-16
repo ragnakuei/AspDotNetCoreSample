@@ -26,7 +26,7 @@ namespace BusinessLogic.Order
             var orderDetails = Enumerable.Empty<int>();
             var totalCount = 0;
 
-            using (var connection = new SqlConnection(_configurationService.GetConnectionString("Northwind")))
+            using (var connection = new SqlConnection(_configurationService.ConnectionString("Northwind")))
             {
                 var sql = @"
 DECLARE @OrderIds table
@@ -102,7 +102,7 @@ FROM dbo.orders
             SharedLibrary.Entity.Order order = null;
             var orderDetails = Enumerable.Empty<OrderDetail>();
 
-            using (var connection = new SqlConnection(_configurationService.GetConnectionString("Northwind")))
+            using (var connection = new SqlConnection(_configurationService.ConnectionString("Northwind")))
             {
                 var sql = @"
 select o.*
@@ -211,7 +211,7 @@ select @maxOrderId
             dynamicParemeter.Add("OrderDetails", GenerateOrderDetailsDataTable(orderDto.Details).AsTableValuedParameter("dbo.ut_OrderDetail"));
 
             var newOrderId = 0;
-            using (var connection = new SqlConnection(_configurationService.GetConnectionString("Northwind")))
+            using (var connection = new SqlConnection(_configurationService.ConnectionString("Northwind")))
             {
                 if(connection.State == ConnectionState.Closed)
                 {
@@ -237,7 +237,7 @@ select @maxOrderId
 
         public void UpdateOrder(OrderDto orderDto)
         {
-            using (var connection = new SqlConnection(_configurationService.GetConnectionString("Northwind")))
+            using (var connection = new SqlConnection(_configurationService.ConnectionString("Northwind")))
             {
                 var sql = @"
 update dbo.orders
@@ -327,7 +327,7 @@ from @OrderDetails
 
         public void DeleteOrder(int orderId)
         {
-            using (var connection = new SqlConnection(_configurationService.GetConnectionString("Northwind")))
+            using (var connection = new SqlConnection(_configurationService.ConnectionString("Northwind")))
             {
                 var sql = @"
 DELETE dbo.[Order Details]
