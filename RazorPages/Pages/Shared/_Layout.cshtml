@@ -33,9 +33,11 @@
                                 <a asp-page="/Sample/Routing/Index" class="dropdown-item">Index</a>
                             </li>
                             <li>
+                                @* 可正確產生 Routing *@
                                 <a asp-page="/Sample/Routing/Custom" class="dropdown-item">Custom</a>
                             </li>
                             <li>
+                                @* 無法產生 Routing *@
                                 <a asp-page="/Sample/Routing/Test/Custom" class="dropdown-item">Test Custom</a>
                             </li>
                             <li>

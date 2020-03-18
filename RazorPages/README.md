@@ -54,6 +54,8 @@
 
 ### 自訂
 
+透過 asp-page 給定指定的 Routing 時，要以檔案路徑路下去給定，不需要給定該頁面指定的 Routing
+
 ```csharp
 @page "/Sample/Routing/Test/Custom"
 ```

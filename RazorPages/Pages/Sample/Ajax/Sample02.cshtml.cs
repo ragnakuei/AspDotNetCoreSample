@@ -13,6 +13,7 @@ namespace RazorPages.Pages.Sample.Ajax
         {
             ViewData["Message"] = "Hi! ";
             
+            // Partial View 的另一個用法
             return new PartialViewResult
             {
                 ViewName = "_HelloWorldPartial",
