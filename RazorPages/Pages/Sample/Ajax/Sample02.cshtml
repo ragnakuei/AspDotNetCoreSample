@@ -1,4 +1,5 @@
 @* 收到後端回應後，更新指定的區塊內容 *@
+@* 前端(ajax) 後端(第一次進入頁面) 都共用同一個 html template，避免重工 *@
 @page
 @model Sample02
 <a href="#"
@@ -8,7 +9,9 @@
    data-ajax-update="#panel">
     Click here
 </a>
-<div id="panel"></div>
+<div id="panel">
+    <partial name="_HelloWorldPartial" />
+</div>
 
 @section scripts{
     <partial name="_JqueryAjaxUnobtrusive" />

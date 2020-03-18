@@ -7,7 +7,7 @@ namespace RazorPages.Pages.Sample.PostValidation
     public class Sample01 : PageModel
     {
         [BindProperty]
-        [Required]
+        [Required(ErrorMessage = "Required Field !!")]
         [StringLength( 60, MinimumLength = 2)]
         public string Name { get; set; }
 
