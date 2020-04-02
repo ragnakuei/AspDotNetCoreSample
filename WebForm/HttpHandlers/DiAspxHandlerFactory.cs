@@ -4,21 +4,21 @@ using WebForm.DI;
 
 namespace WebForm.HttpHandlers
 {
-    public class DiPageHandlerFactory : PageHandlerFactory
+    public class DiAspxHandlerFactory : PageHandlerFactory
     {
         public override IHttpHandler GetHandler(HttpContext context,
                                                 string requestType,
                                                 string virtualPath,
                                                 string path)
         {
-            Page page = base.GetHandler(context, requestType, virtualPath, path) as Page;
-            if (page != null)
+            var httpHandler = base.GetHandler(context, requestType, virtualPath, path);
+            if (httpHandler != null)
             {
                 var container = context?.Application["DiContainer"] as IDiFactory;
-                container?.DiPropetiesForWebForm(page, container);
+                container?.DiPropetiesForWebForm(httpHandler, container);
             }
 
-            return page;
+            return httpHandler;
         }
     }
 }

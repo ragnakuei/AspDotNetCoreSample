@@ -4,7 +4,7 @@ namespace BusinessLogic.Order
 {
     public interface IOrderService
     {
-        OrderListDto GetOrderList(int index, int pageIndex);
+        OrderListDto GetOrderList(int pageIndex, int pageSize);
         OrderDto GetOrder(int orderId);
         void UpdateOrder(OrderDto orderDto);
         int CreateOrder(OrderDto orderDto);
