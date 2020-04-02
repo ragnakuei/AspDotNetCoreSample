@@ -1,8 +1,12 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 using System.Web;
 using System.Web.UI;
 using BusinessLogic.Order;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using SharedLibrary.Dto;
 
 namespace WebForm.API.Order
 {
@@ -15,22 +19,28 @@ namespace WebForm.API.Order
 
         public override void ProcessRequest(HttpContext context)
         {
-            if (string.Equals(context.Request.HttpMethod, "get", StringComparison.CurrentCultureIgnoreCase) == false)
+            if (string.Equals(context.Request.HttpMethod, "post", StringComparison.CurrentCultureIgnoreCase) == false)
             {
                 context.Response.StatusCode = 404;
                 return;
             }
 
-            Int32.TryParse(context.Request.Form["pageIndex"], out int pageIndex);
-            Int32.TryParse(context.Request.Form["pageSize"], out int pageSize);
+            Stream stream = context.Request.InputStream;
+            var sr = new StreamReader(stream).ReadToEnd();
+            var pageInfo = JsonConvert.DeserializeObject<PageInfoDto>(sr);
 
-            if (pageSize == 0)
+            var orderList = OrderService.GetOrderList(pageInfo.Current - 1, pageInfo.RowCount);
+            var json = JsonConvert.SerializeObject(new
             {
-                pageSize = 10;
-            }
-            
-            var orderList = OrderService.GetOrderList(pageIndex, pageSize);
-            var json = JsonConvert.SerializeObject(orderList);
+                pageInfo.Current,
+                pageInfo.RowCount,
+                total = orderList.TotalCount,
+                rows = orderList.Items,
+            }, new JsonSerializerSettings
+            {
+                // 把 Json Property 改成 小寫開頭 (CamelCase)
+                ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() }
+            });
 
             context.Response.ContentType = "application/json";
             context.Response.Charset = "utf-8";

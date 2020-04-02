@@ -78,14 +78,17 @@
         </div>
     </div>
     <div class="container body-content">
-        <asp:ContentPlaceHolder ID="MainContent" runat="server">
-        </asp:ContentPlaceHolder>
+        <main role="main" class="pb-3">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </main>
         <hr/>
-        <footer>
-            <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
-        </footer>
     </div>
-
+    <footer>
+        <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+    </footer>
 </form>
+
+<asp:ContentPlaceHolder ID="BottomScripts" runat="server"/>
+
 </body>
 </html>

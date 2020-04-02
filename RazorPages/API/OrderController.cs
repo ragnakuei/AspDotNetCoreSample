@@ -1,5 +1,6 @@
 ﻿using BusinessLogic.Order;
 using Microsoft.AspNetCore.Mvc;
+using SharedLibrary.Dto;
 
 namespace RazorPages.API
 {
@@ -15,22 +16,16 @@ namespace RazorPages.API
         }
 
         [HttpPost, Route("list")]
-        public IActionResult List(PageInfo pageInfo)
+        public IActionResult List(PageInfoDto pageInfoDto)
         {
-            var result = _orderService.GetOrderList(pageInfo.Current - 1, pageInfo.RowCount);
+            var result = _orderService.GetOrderList(pageInfoDto.Current - 1, pageInfoDto.RowCount);
             return Ok(new
                       {
-                          current = pageInfo.Current,
-                          rowCount = pageInfo.RowCount,
+                          current = pageInfoDto.Current,
+                          rowCount = pageInfoDto.RowCount,
                           total = result.TotalCount,
                           rows = result.Items,
                       });
         }
-    }
-
-    public class PageInfo
-    {
-        public int Current { get; set; } = 1;
-        public int RowCount { get; set; } = 10;
     }
 }
