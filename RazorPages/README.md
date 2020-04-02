@@ -13,9 +13,10 @@
     - [Get](#get)
     - [Post 至 PageModel](#post-%e8%87%b3-pagemodel)
     - [單一 Http Method 支援多個處理](#%e5%96%ae%e4%b8%80-http-method-%e6%94%af%e6%8f%b4%e5%a4%9a%e5%80%8b%e8%99%95%e7%90%86)
-  - [參考資料](#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99)
   - [Ajax](#ajax)
   - [Partial Pages](#partial-pages)
+  - [參考資料](#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99)
+  - [會議後問題追加修改項目](#%e6%9c%83%e8%ad%b0%e5%be%8c%e5%95%8f%e9%a1%8c%e8%bf%bd%e5%8a%a0%e4%bf%ae%e6%94%b9%e9%a0%85%e7%9b%ae)
 
 ---
 
@@ -53,6 +54,8 @@
 | /Pages/Store/Index.cshtml   | /Store 或 /Store/Index |
 
 ### 自訂
+
+透過 asp-page 給定指定的 Routing 時，要以檔案路徑路下去給定，不需要給定該頁面指定的 Routing
 
 ```csharp
 @page "/Sample/Routing/Test/Custom"
@@ -183,12 +186,6 @@
 
 - [asp-page-handler](https://www.learnrazorpages.com/razor-pages/handler-methods)
 
----
-
-## 參考資料
-
-- [Learn Razor Pages](https://www.learnrazorpages.com/)
-
 ## Ajax
 
 可搭配 [jquery-ajax-unobtrusive](https://www.jsdelivr.com/package/npm/jquery-ajax-unobtrusive) 及 asp-page-handler
@@ -209,3 +206,16 @@ public IActionResult OnGetPartial()
     };
 }
 ```
+
+---
+
+## 參考資料
+
+- [Learn Razor Pages](https://www.learnrazorpages.com/)
+
+## 會議後問題追加修改項目
+
+1. custom validation message (/Pages/Sample/PostValidation/Sample01.cshtml)
+1. regex routing (Pages/Sample/Routing/ParameterRegexConstraint.cshtml)
+1. usercontrol 共用 (/Pages/Sample/Ajax/Sample02)
+1. post 加上 csrf ( Startup.cs 及 /Pages/Sample/PostValidation/Sample01.cshtml)

@@ -7,12 +7,14 @@ namespace RazorPages.Pages.Sample.Ajax
     {
         public void OnGet()
         {
+            ViewData["Message"] = "(OnGet) Hi! ";
         }
 
         public IActionResult OnGetPartial()
         {
-            ViewData["Message"] = "Hi! ";
+            ViewData["Message"] = "(OnGetPartial) Hi! ";
             
+            // Partial View 的另一個用法
             return new PartialViewResult
             {
                 ViewName = "_HelloWorldPartial",

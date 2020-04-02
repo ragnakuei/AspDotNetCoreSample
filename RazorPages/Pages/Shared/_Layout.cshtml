@@ -33,13 +33,18 @@
                                 <a asp-page="/Sample/Routing/Index" class="dropdown-item">Index</a>
                             </li>
                             <li>
+                                @* 可正確產生 Routing *@
                                 <a asp-page="/Sample/Routing/Custom" class="dropdown-item">Custom</a>
                             </li>
                             <li>
+                                @* 無法產生 Routing *@
                                 <a asp-page="/Sample/Routing/Test/Custom" class="dropdown-item">Test Custom</a>
                             </li>
                             <li>
                                 <a asp-page="/Sample/Routing/Parameter" asp-route-id="1" class="dropdown-item">Parameter 1</a>
+                            </li>
+                            <li>
+                                <a asp-page="/Sample/Routing/ParameterRegexConstraint" asp-route-id="1" class="dropdown-item">Parameter Regex Constraint</a>
                             </li>
                         </ul>
                     </li>

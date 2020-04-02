@@ -12,18 +12,17 @@ namespace RazorPages.Pages.Sample.PostValidation
         {
             ValidationModel = new PostValidationSample03Model();
         }
-        
-        /// <remarks>
-        /// 這個方式可用於 MVC ，但 RazorPage 目前不支援
-        /// </remarks>
-        public IActionResult OnPost(PostValidationSample03Model t)
+
+        public IActionResult OnPost(PostValidationSample03Model validationModel)
         {
-            if(t.Name.Length < 2)
+            if (validationModel.Name?.Length < 2)
             {
-                ModelState.AddModelError( nameof(PostValidationSample03Model.Name), "Name MinimumLength is 2" );
+                var propertyKey = $"{nameof(validationModel)}.{nameof(PostValidationSample03Model.Name)}";
+                ModelState[propertyKey].Errors.Clear();
+                ModelState.AddModelError(propertyKey, "Name MinimumLength is 2");
             }
-            
-            ValidationModel = t;
+
+            this.ValidationModel = validationModel;
             return Page();
         }
     }
@@ -31,7 +30,7 @@ namespace RazorPages.Pages.Sample.PostValidation
     public class PostValidationSample03Model
     {
         [Required]
-        [StringLength( 60, MinimumLength = 2)]
+        [StringLength(60, MinimumLength = 2)]
         public string Name { get; set; }
     }
 }

@@ -30,6 +30,9 @@ namespace RazorPages
                                               options.Conventions.AddPageRoute("/Order/Edit", "/Order/Edit/{Id}");
                                           });
             services.AddControllers();
+            
+            // 防止 CSRF 攻擊
+            // services.AddAntiforgery();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

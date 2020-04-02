@@ -1,0 +1,11 @@
+﻿@* 透過 BindProperty 來取出 Routing 上的參數 *@
+@page "/routing/ParameterRegexConstraint/{id:regex(^\d{{1,2}}$)}"
+@model RazorPages.Pages.Sample.Routing.Parameter
+
+@{
+    
+}
+
+<h1>Routing/Index</h1>
+
+<h3 class="clearfix">@Model.Id</h3>
