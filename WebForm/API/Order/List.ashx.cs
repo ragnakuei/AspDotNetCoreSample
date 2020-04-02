@@ -25,9 +25,9 @@ namespace WebForm.API.Order
                 return;
             }
 
-            Stream stream = context.Request.InputStream;
-            var sr = new StreamReader(stream).ReadToEnd();
-            var pageInfo = JsonConvert.DeserializeObject<PageInfoDto>(sr);
+            var stream = context.Request.InputStream;
+            var requestBody = new StreamReader(stream).ReadToEnd();
+            var pageInfo = JsonConvert.DeserializeObject<PageInfoDto>(requestBody);
 
             var orderList = OrderService.GetOrderList(pageInfo.Current - 1, pageInfo.RowCount);
             var json = JsonConvert.SerializeObject(new

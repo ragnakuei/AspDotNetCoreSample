@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="Order List" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="List.aspx.cs" Inherits="WebForm.Order.List" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <a class="btn btn-primary float-right" asp-page="/order/create" role="button">Create</a>
+    <hr/>
+    <a class="btn btn-primary float-right" href="/order/create.aspx">Create</a>
     <table id="orderList" class="table table-condensed table-hover table-striped">
         <thead>
         <tr>

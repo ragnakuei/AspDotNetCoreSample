@@ -1,18 +1,15 @@
-﻿using System.Collections.Generic;
-using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Configuration;
 
 namespace BusinessLogic.Configuration
 {
     /// <summary>
-    /// 透過 IConfiguration 讀取設定
+    /// 透過 ConfigurationManager 讀取組態檔
     /// </summary>
-    public class ConfigurationService : IConfigurationService
+    public class ConfigurationManagerService : IConfigurationService
     {
-        private readonly IConfiguration _configuration;
-
-        public ConfigurationService(IConfiguration configuration)
+        public ConfigurationManagerService()
         {
-            _configuration = configuration;
         }
         
         private Dictionary<string, string> _connectionStrings = new Dictionary<string, string>();
@@ -24,7 +21,7 @@ namespace BusinessLogic.Configuration
                 return result;
             }
             
-            var connectionString = _configuration.GetConnectionString(name);
+            var connectionString = ConfigurationManager.ConnectionStrings[name]?.ToString();
             _connectionStrings.Add(name, connectionString);
 
             return connectionString;
