@@ -54,10 +54,10 @@
                         <a runat="server" href="~/">Home</a>
                     </li>
                     <li>
-                        <a runat="server" href="~/About">About</a>
+                        <a runat="server" href="~/About.aspx">About</a>
                     </li>
                     <li>
-                        <a runat="server" href="~/Contact">Contact</a>
+                        <a runat="server" href="~/Contact.aspx">Contact</a>
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -66,10 +66,10 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a runat="server" href="~/Order/List">List</a>
+                                <a runat="server" href="~/Order/List.aspx">List</a>
                             </li>
                             <li>
-                                <a runat="server" href="~/Order/Create">Create</a>
+                                <a runat="server" href="~/Order/Create.aspx">Create</a>
                             </li>
                         </ul>
                     </li>

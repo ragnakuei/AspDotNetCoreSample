@@ -4,17 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BusinessLogic.Order;
 
-namespace WebForm.Order
+namespace WebForm.HttpHandlers.Order
 {
-    public partial class List : Page
+    public partial class List : System.Web.UI.Page
     {
-        public IOrderService OrderService { get; set; }
-        
         protected void Page_Load(object sender, EventArgs e)
         {
-  
+
         }
     }
 }

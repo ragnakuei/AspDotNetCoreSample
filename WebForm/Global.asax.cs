@@ -6,6 +6,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using WebForm.DI;
 
 namespace WebForm
 {
@@ -14,8 +15,9 @@ namespace WebForm
         void Application_Start(object sender, EventArgs e)
         {
             // Code that runs on application startup
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
+            Application["DiContainer"] = new DiFactory();
         }
     }
 }
