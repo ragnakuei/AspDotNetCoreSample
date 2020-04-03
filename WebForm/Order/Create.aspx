@@ -75,7 +75,7 @@
         <div class="col-sm-10">
             <input id="<%: nameof(Order.RequiredDate) %>" value="<%: OrderDto?.RequiredDate?.ToString("yyyy-MM-dd") %>" type="date" class="form-control"/>
         </div>
-    </div>x
+    </div>
     <div class="form-group row">
         <label for="<%: nameof(Order.ShippedDate) %>" class="col-sm-2 col-form-label">ShippedDate</label>
         <div class="col-sm-10">
