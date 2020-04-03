@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BusinessLogic.Order;
 using Newtonsoft.Json;
 using SharedLibrary.Dto;
 
@@ -33,12 +34,22 @@ namespace WebForm.Order
                 Debug.WriteLine(formData.Value);
             }
         }
-        
-        public OrderDto OrderDto { get; set; }
+
+        public IOrderService OrderService { get; set; }
+
+        protected OrderDto OrderDto { get; private set; }
 
         protected void OnClickBtnSubmit(object sender, EventArgs e)
         {
-            
+            try
+            {
+                OrderService.CreateOrder(OrderDto);
+                Response.Redirect("~/Order/List.aspx");
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception);
+            }
         }
     }
 }
