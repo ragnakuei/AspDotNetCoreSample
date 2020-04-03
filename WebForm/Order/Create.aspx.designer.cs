@@ -22,6 +22,15 @@ namespace WebForm.Order {
         protected global::System.Web.UI.WebControls.Button btnSubmit;
         
         /// <summary>
+        /// formData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField formData;
+        
+        /// <summary>
         /// Master property.
         /// </summary>
         /// <remarks>
