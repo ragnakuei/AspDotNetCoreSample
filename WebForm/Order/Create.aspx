@@ -3,6 +3,8 @@
 
 <asp:Content ID="ScriptContent" ContentPlaceHolderID="BottomScripts" runat="server">
     <script>
+        var hiddenFieldId = '<%= nameof(formData) %>';
+        
         $("form").submit(function (e) {
             try {
               const dto = {
@@ -40,7 +42,7 @@
               
               const dtoJson = JSON.stringify(dto);
               console.log(dtoJson);         
-              $("#MainContent_formData").val(dtoJson);
+                $("#" + hiddenFieldId).val(dtoJson);
               
             } catch (e) {
               console.log(e);
@@ -166,5 +168,5 @@
     </table>
     <asp:Button runat="server" ID="btnSubmit" OnClick="OnClickBtnSubmit" Text="Submit" class="btn btn-primary" />
     <a class="btn btn-primary" href="/order/list.aspx">Cancel</a>
-    <asp:HiddenField runat="server" ID="formData" />
+    <asp:HiddenField runat="server" ID="formData" ClientIDMode="Static" />
 </asp:Content>
