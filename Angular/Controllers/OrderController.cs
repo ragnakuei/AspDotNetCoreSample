@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using SharedLibrary.Dto;
 
-namespace AngularWithAspNetCoreWebApiDemo.Controllers
+namespace Angular.Controllers
 {
     [ApiController]
-    [Route("api/order")]
+    [Route("api/[controller]")]
     public class OrderController : ControllerBase
     {
         private readonly IOrderService _orderService;

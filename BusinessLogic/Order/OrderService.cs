@@ -52,7 +52,7 @@ FROM dbo.[Order Details] od
          ON oIds.OrderID = od.OrderID
 
 SELECT count(0)
-FROM dbo.orders
+FROM dbo.Orders
 ";
                 var dynamicParameters = new DynamicParameters();
                 dynamicParameters.Add("skipCount", pageIndex * pageSize, DbType.Int32);

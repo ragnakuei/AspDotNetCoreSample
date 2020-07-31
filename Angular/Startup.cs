@@ -1,15 +1,15 @@
-using System;
-using System.Linq;
-using System.Reflection;
 using BusinessLogic;
+using BusinessLogic.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
+using SharedLibrary.Dto;
 
-namespace AngularWithAspNetCoreWebApiDemo
+namespace Angular
 {
     public class Startup
     {
@@ -24,12 +24,26 @@ namespace AngularWithAspNetCoreWebApiDemo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddTransient<IConfigurationService, ConfigurationService>();
             services.AddBusinessLogicServices();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddCors(options =>
+                             {
+                                 options.AddPolicy(_frontEndSiteName,
+                                                   builder =>
+                                                   {
+                                                       var apiConfig = Configuration.Get<ApiConfig>();
+
+                                                       builder.WithOrigins(apiConfig.Cors.Origins)
+                                                              .AllowAnyMethod()
+                                                              .AllowAnyHeader();
+                                                   });
+                             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +57,8 @@ namespace AngularWithAspNetCoreWebApiDemo
             {
                 app.UseExceptionHandler("/Error");
             }
+
+            app.UseCors(_frontEndSiteName);
 
             app.UseStaticFiles();
             if (!env.IsDevelopment())
@@ -72,5 +88,7 @@ namespace AngularWithAspNetCoreWebApiDemo
                 }
             });
         }
+
+        private readonly string _frontEndSiteName = "Vue";
     }
 }

@@ -17,8 +17,8 @@ namespace WebForm.DI
         {
             var services = new ServiceCollection();
             services.AddSingleton<IDiFactory, DiFactory>();
-            services.AddBusinessLogicServices();
             services.AddTransient<IConfigurationService, ConfigurationManagerService>();
+            services.AddBusinessLogicServices();
 
             _serviceProvider = services.BuildServiceProvider();
         }

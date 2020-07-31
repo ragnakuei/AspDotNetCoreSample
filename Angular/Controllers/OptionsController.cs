@@ -1,7 +1,7 @@
 ﻿using BusinessLogic.Options;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AngularWithAspNetCoreWebApiDemo.Controllers
+namespace Angular.Controllers
 {
     [ApiController]
     [Route("api/options")]

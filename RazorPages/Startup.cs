@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BusinessLogic;
+using BusinessLogic.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +23,7 @@ namespace RazorPages
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IConfigurationService, ConfigurationService>();
             services.AddBusinessLogicServices();
             services.AddRazorPages()
                     .AddRazorPagesOptions(options =>
@@ -30,7 +32,7 @@ namespace RazorPages
                                               options.Conventions.AddPageRoute("/Order/Edit", "/Order/Edit/{Id}");
                                           });
             services.AddControllers();
-            
+
             // 防止 CSRF 攻擊
             // services.AddAntiforgery();
         }
